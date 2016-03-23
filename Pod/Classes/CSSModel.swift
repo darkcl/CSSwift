@@ -9,13 +9,28 @@
 import Foundation
 
 public class CSSModel: NSObject {
-    var rules: [AnyObject]?
-    var selector: String?
+    public var rules: [CSSRuleModel]!
+    public var selector: String!
     
     convenience init(infoDict:[String: AnyObject]!) {
         self.init()
-        
-        rules = infoDict["rules"]! as? [AnyObject]
+        rules = [CSSRuleModel]()
+        for dict in (infoDict["rules"] as? [Dictionary<String,String>])! {
+            print(dict)
+            rules.append(CSSRuleModel(name: dict["directive"], content: dict["value"]))
+        }
         selector = infoDict["selector"]! as? String
+    }
+}
+
+public class CSSRuleModel: NSObject {
+    public var ruleName: String!
+    public var ruleContent: String!
+    
+    convenience init(name: String!, content: String!) {
+        self.init()
+        
+        ruleName = name
+        ruleContent = content
     }
 }
