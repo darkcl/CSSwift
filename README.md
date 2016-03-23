@@ -17,12 +17,12 @@ CSSwift is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod "CSSwift"
+pod 'CSSwift'
 ```
 
 ## Author
 
-Yeung Yiu Hung, yeungyiuhung@cherrypicks.com
+Yeung Yiu Hung, hkclex@gmail.com
 
 ## License
 
