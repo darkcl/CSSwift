@@ -1,0 +1,14 @@
+PODS:
+  - CSSwift (0.1.0)
+
+DEPENDENCIES:
+  - CSSwift (from `../`)
+
+EXTERNAL SOURCES:
+  CSSwift:
+    :path: ../
+
+SPEC CHECKSUMS:
+  CSSwift: 22f7500e338c7018507c87b40aceef2245e8c3ef
+
+COCOAPODS: 0.39.0
