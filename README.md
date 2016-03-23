@@ -9,7 +9,10 @@
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-## Requirements
+## TODO
+
+[ ] Model all css style tags
+[ ] Porting from css.js to swift
 
 ## Installation
 

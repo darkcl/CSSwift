@@ -34,7 +34,7 @@ public class CSSParser: NSObject {
         }
     }
     
-    public func paresCSS(cssString: String) -> AnyObject? {
+    public func paresCSS(cssString: String) -> [CSSModel]! {
         loadCssJs()
         
         cssJs.evaluateScript("var cssString = '\(cssString)';")

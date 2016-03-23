@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CSSModel: NSObject {
+public class CSSModel: NSObject {
     var rules: [AnyObject]?
     var selector: String?
     
