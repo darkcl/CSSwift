@@ -22,10 +22,5 @@
     "CSSwift": [
       "Pod/Assets/*.js"
     ]
-  },
-  "dependencies": {
-    "ObjectMapper": [
-      "~> 1.1.5"
-    ]
   }
 }

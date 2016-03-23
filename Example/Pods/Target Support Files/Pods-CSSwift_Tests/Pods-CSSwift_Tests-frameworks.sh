@@ -85,9 +85,7 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-CSSwift_Tests/CSSwift.framework"
-  install_framework "Pods-CSSwift_Tests/ObjectMapper.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-CSSwift_Tests/CSSwift.framework"
-  install_framework "Pods-CSSwift_Tests/ObjectMapper.framework"
 fi
