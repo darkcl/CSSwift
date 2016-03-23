@@ -8,7 +8,7 @@
 
 import JavaScriptCore
 
-public class Parser: NSObject {
+public class CSSParser: NSObject {
     var cssJs: JSContext!
     
     func loadCssJs() {

@@ -17,7 +17,7 @@ class Tests: XCTestCase {
     func testParsingCSS() {
         // This is an example of a functional test case.
         
-        let aParser: CSSwift.Parser! = CSSwift.Parser()
+        let aParser: CSSParser! = CSSParser()
         let result = aParser.paresCSS(" .someSelector { margin:40px 10px; padding:5px}");
         XCTAssertNotNil(result)
     }
