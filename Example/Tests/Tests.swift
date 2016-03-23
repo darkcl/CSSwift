@@ -14,12 +14,12 @@ class Tests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
+    func testParsingCSS() {
         // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
+        
         let aParser: CSSwift.Parser! = CSSwift.Parser()
-        aParser.testJS()
-        XCTAssertNotNil(aParser)
+        let result = aParser.paresCSS(" .someSelector { margin:40px 10px; padding:5px}");
+        XCTAssertNotNil(result)
     }
     
 }

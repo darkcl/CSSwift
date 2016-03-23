@@ -11,7 +11,7 @@ import JavaScriptCore
 public class Parser: NSObject {
     var cssJs: JSContext!
     
-    public func testJS() {
+    func loadCssJs() {
         cssJs = JSContext()
         let podBundle = NSBundle(forClass: self.classForCoder)
         
@@ -32,13 +32,15 @@ public class Parser: NSObject {
         }else {
             assertionFailure("Could not create a path to the bundle")
         }
+    }
+    
+    public func paresCSS(cssString: String) -> AnyObject? {
+        loadCssJs()
         
-        cssJs.evaluateScript("var cssString = ' .someSelector { margin:40px 10px; padding:5px}';")
+        cssJs.evaluateScript("var cssString = '\(cssString)';")
         cssJs.evaluateScript("var parser = new cssjs();")
-        
-        
-        let tripleNum: JSValue = cssJs.evaluateScript("JSON.stringify(parser.parseCSS(cssString))")
-        
-        print(tripleNum)
+        let jsResult = cssJs.evaluateScript("parser.parseCSS(cssString)")
+        let result = jsResult.toDictionary()
+        return result
     }
 }
