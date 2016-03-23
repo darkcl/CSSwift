@@ -19,6 +19,9 @@ class Tests: XCTestCase {
         
         let aParser: CSSParser! = CSSParser()
         let result = aParser.paresCSS(" .someSelector { margin:40px 10px; padding:5px}");
+        
+        print(result)
+        
         XCTAssertNotNil(result)
     }
     

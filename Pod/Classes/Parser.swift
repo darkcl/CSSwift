@@ -39,8 +39,14 @@ public class CSSParser: NSObject {
         
         cssJs.evaluateScript("var cssString = '\(cssString)';")
         cssJs.evaluateScript("var parser = new cssjs();")
-        let jsResult = cssJs.evaluateScript("parser.parseCSS(cssString)")
-        let result = jsResult.toDictionary()
+        let cssResult = cssJs.evaluateScript("parser.parseCSS(cssString)")
+        let jsResult = cssResult.toArray()
+        var result = Array<CSSModel>();
+        for dict in jsResult{
+            
+            result.append(CSSModel(infoDict: dict as! [String : AnyObject]))
+        }
+        
         return result
     }
 }

@@ -1,5 +1,7 @@
 PODS:
-  - CSSwift (0.1.0)
+  - CSSwift (0.1.0):
+    - ObjectMapper (~> 1.1.5)
+  - ObjectMapper (1.1.5)
 
 DEPENDENCIES:
   - CSSwift (from `../`)
@@ -9,6 +11,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  CSSwift: de1f373b6a792460bb8e927b04b9d34fe2e009ea
+  CSSwift: 347afb5fdbfac4f7a3135f86f0d1ceec9b81d36a
+  ObjectMapper: 528b1a6677a6acac7747edd508576983e76a9148
 
 COCOAPODS: 0.39.0
