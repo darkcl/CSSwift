@@ -18,7 +18,7 @@ class Tests: XCTestCase {
         // This is an example of a functional test case.
         XCTAssert(true, "Pass")
         let aParser: CSSwift.Parser! = CSSwift.Parser()
-        
+        aParser.testJS()
         XCTAssertNotNil(aParser)
     }
     

@@ -15,11 +15,12 @@
   "platforms": {
     "ios": "8.0"
   },
+  "frameworks": "JavaScriptCore",
   "requires_arc": true,
   "source_files": "Pod/Classes/**/*",
   "resource_bundles": {
     "CSSwift": [
-      "Pod/Assets/*.png"
+      "Pod/Assets/*.js"
     ]
   }
 }

@@ -27,14 +27,14 @@ Pod::Spec.new do |s|
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.platform     = :ios, '8.0'
+  s.frameworks         = 'JavaScriptCore'
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes/**/*'
   s.resource_bundles = {
-    'CSSwift' => ['Pod/Assets/*.png']
+    'CSSwift' => ['Pod/Assets/*.js']
   }
-
   # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
+  # s.frameworks = 'Java​Script​Core'
   # s.dependency 'AFNetworking', '~> 2.3'
 end
