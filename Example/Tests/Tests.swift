@@ -14,7 +14,7 @@ class Tests: XCTestCase {
         super.tearDown()
     }
     
-    func testParsingCSS() {
+    func testParsingSimpleCSS() {
         
         let aParser: CSSParser! = CSSParser()
         let result = aParser.paresCSS(" .someSelector { margin:40px 10px; padding:5px}");
@@ -23,17 +23,21 @@ class Tests: XCTestCase {
         
         XCTAssertEqual(result.count, 1)
         
-        let model: CSSModel? = result[0]
-        XCTAssertEqual(model?.selector, ".someSelector")
+        let model: CSSModel! = result[0]
+        XCTAssertEqual(model.selector, ".someSelector")
         
         XCTAssertNotNil(model)
-        XCTAssertEqual(model?.rules?.count, 2)
+        XCTAssertEqual(model.rules?.count, 2)
         
-        let firstRule: CSSRuleModel? = model?.rules![0]
+        let firstRule: CSSRuleModel = model.rules![0]
         XCTAssertNotNil(firstRule)
-        XCTAssertEqual(firstRule?.ruleName, "margin")
-        XCTAssertEqual(firstRule?.ruleContent, "40px 10px")
+        XCTAssertEqual(firstRule.ruleName, "margin")
+        XCTAssertEqual(firstRule.ruleContent, "40px 10px")
         
+        let secondRule: CSSRuleModel = model.rules![1]
+        XCTAssertNotNil(secondRule)
+        XCTAssertEqual(secondRule.ruleName, "padding")
+        XCTAssertEqual(secondRule.ruleContent, "5px")
     }
     
 }

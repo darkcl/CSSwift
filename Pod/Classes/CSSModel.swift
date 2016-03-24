@@ -8,15 +8,25 @@
 
 import Foundation
 
+enum CSSProperties : String {
+    case Color = "color"
+    case Opacity = "opacity"
+    
+    static let allProperties = [Color, Opacity]
+}
+
 public class CSSModel: NSObject {
     public var rules: [CSSRuleModel]!
+    public var type: String!
     public var selector: String!
     
     convenience init(infoDict:[String: AnyObject]!) {
         self.init()
+        
+        print(infoDict)
         rules = [CSSRuleModel]()
         for dict in (infoDict["rules"] as? [Dictionary<String,String>])! {
-            print(dict)
+            
             rules.append(CSSRuleModel(name: dict["directive"], content: dict["value"]))
         }
         selector = infoDict["selector"]! as? String
