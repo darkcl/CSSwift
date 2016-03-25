@@ -53,9 +53,9 @@ public class CSSParser: NSObject {
     public func paresCSS(cssString: String) -> [CSSModel]! {
         loadCssJs()
         
-        cssJs.evaluateScript("var cssString = \"\(cssString.stringByReplacingOccurrencesOfString("\n", withString: ""))\";")
+        cssJs.setObject(cssString, forKeyedSubscript: "cssValue")
         cssJs.evaluateScript("var parser = new cssjs();")
-        let cssResult = cssJs.evaluateScript("parser.parseCSS(cssString)")
+        let cssResult = cssJs.evaluateScript("parser.parseCSS(cssValue)")
         let jsResult = cssResult.toArray()
         var result = Array<CSSModel>();
         guard (jsResult != nil) else{

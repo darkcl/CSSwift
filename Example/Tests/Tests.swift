@@ -57,6 +57,21 @@ class Tests: XCTestCase {
         XCTAssertNotNil(firstRule)
         XCTAssertEqual(firstRule.ruleName, "color")
         XCTAssertEqual(firstRule.ruleContent, "black")
+    }
+    
+    func testParsingSimpleCSSWithComment() {
+        let simpleCssTestCase = testingInput["basicCSS2"] as! [String: String]
+        let result = testingParser.paresCSS(simpleCssTestCase["input"]!);
         
+        XCTAssertEqual(result.count, 1)
+        
+        let model: CSSModel! = result[0]
+        XCTAssertEqual(model.selector, "html")
+        XCTAssertEqual(model.comments, "/*\nSome Comments\nBaby \n*/")
+        
+        let firstRule: CSSRuleModel = model.rules![0]
+        XCTAssertNotNil(firstRule)
+        XCTAssertEqual(firstRule.ruleName, "color")
+        XCTAssertEqual(firstRule.ruleContent, "black")
     }
 }

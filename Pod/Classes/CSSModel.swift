@@ -17,6 +17,7 @@ enum CSSProperties : String {
 
 public class CSSModel: NSObject {
     public var rules: [CSSRuleModel]!
+    public var comments: String!
     public var type: String!
     public var selector: String!
     
@@ -30,6 +31,7 @@ public class CSSModel: NSObject {
             rules.append(CSSRuleModel(name: dict["directive"], content: dict["value"]))
         }
         selector = infoDict["selector"]! as? String
+        comments = infoDict["comments"] as? String
     }
 }
 
