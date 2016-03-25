@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0720"
+   LastUpgradeVersion = "0730"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,23 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-               BuildableName = "CSSwift_Example.app"
-               BlueprintName = "CSSwift_Example"
-               ReferencedContainer = "container:CSSwift.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "607FACE41AFB9204008FA782"
-               BuildableName = "CSSwift_Tests.xctest"
-               BlueprintName = "CSSwift_Tests"
+               BlueprintIdentifier = "746B66B81CA578570078746D"
+               BuildableName = "CSSwiftiOS.framework"
+               BlueprintName = "CSSwift-iOS"
                ReferencedContainer = "container:CSSwift.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -46,9 +32,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "607FACE41AFB9204008FA782"
-               BuildableName = "CSSwift_Tests.xctest"
-               BlueprintName = "CSSwift_Tests"
+               BlueprintIdentifier = "746B66C11CA578570078746D"
+               BuildableName = "CSSwift-iOSTests.xctest"
+               BlueprintName = "CSSwift-iOSTests"
                ReferencedContainer = "container:CSSwift.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -56,9 +42,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "CSSwift_Example.app"
-            BlueprintName = "CSSwift_Example"
+            BlueprintIdentifier = "746B66B81CA578570078746D"
+            BuildableName = "CSSwiftiOS.framework"
+            BlueprintName = "CSSwift-iOS"
             ReferencedContainer = "container:CSSwift.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -75,16 +61,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "CSSwift_Example.app"
-            BlueprintName = "CSSwift_Example"
+            BlueprintIdentifier = "746B66B81CA578570078746D"
+            BuildableName = "CSSwiftiOS.framework"
+            BlueprintName = "CSSwift-iOS"
             ReferencedContainer = "container:CSSwift.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -94,16 +79,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "CSSwift_Example.app"
-            BlueprintName = "CSSwift_Example"
+            BlueprintIdentifier = "746B66B81CA578570078746D"
+            BuildableName = "CSSwiftiOS.framework"
+            BlueprintName = "CSSwift-iOS"
             ReferencedContainer = "container:CSSwift.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

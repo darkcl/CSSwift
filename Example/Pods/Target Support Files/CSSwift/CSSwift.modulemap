@@ -1,6 +1,0 @@
-framework module CSSwift {
-  umbrella header "CSSwift-umbrella.h"
-
-  export *
-  module * { export * }
-}

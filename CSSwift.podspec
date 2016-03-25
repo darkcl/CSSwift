@@ -31,10 +31,8 @@ A css parser written in swift.
   s.frameworks         = 'JavaScriptCore'
   s.requires_arc = true
 
-  s.source_files = 'Pod/Classes/**/*'
-  s.resource_bundles = {
-    'CSSwift' => ['Pod/Assets/*.js']
-  }
+  s.source_files = 'Classes/**/*'
+  
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'Java​Script​Core'
   # s.dependency 'ObjectMapper', '~> 1.1.5'
