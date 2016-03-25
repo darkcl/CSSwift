@@ -1,6 +1,6 @@
 # CSSwift (WIP, Porting CSS.js to swift)
 
-[![CI Status](http://img.shields.io/travis/Yeung Yiu Hung/CSSwift.svg?style=flat)](https://travis-ci.org/Yeung Yiu Hung/CSSwift)
+[![Build Status](https://travis-ci.org/darkcl/CSSwift.svg?branch=master)](https://travis-ci.org/darkcl/CSSwift)
 [![Version](https://img.shields.io/cocoapods/v/CSSwift.svg?style=flat)](http://cocoapods.org/pods/CSSwift)
 [![License](https://img.shields.io/cocoapods/l/CSSwift.svg?style=flat)](http://cocoapods.org/pods/CSSwift)
 [![Platform](https://img.shields.io/cocoapods/p/CSSwift.svg?style=flat)](http://cocoapods.org/pods/CSSwift)
