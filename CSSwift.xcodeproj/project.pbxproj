@@ -9,13 +9,11 @@
 /* Begin PBXBuildFile section */
 		746B66571CA571560078746D /* CSSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 746B66561CA571560078746D /* CSSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		746B665E1CA571560078746D /* CSSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 746B66531CA571560078746D /* CSSwift.framework */; };
-		746B66631CA571560078746D /* CSSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746B66621CA571560078746D /* CSSwiftTests.swift */; };
 		746B668E1CA575820078746D /* css.js in Resources */ = {isa = PBXBuildFile; fileRef = 746B668D1CA575820078746D /* css.js */; };
 		746B66901CA5759C0078746D /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 746B668F1CA5759C0078746D /* JavaScriptCore.framework */; };
 		746B66921CA575F40078746D /* Test.json in Resources */ = {isa = PBXBuildFile; fileRef = 746B66911CA575F40078746D /* Test.json */; };
 		746B66BC1CA578570078746D /* CSSwift-iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 746B66BB1CA578570078746D /* CSSwift-iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		746B66C31CA578570078746D /* CSSwiftiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 746B66B91CA578570078746D /* CSSwiftiOS.framework */; };
-		746B66C81CA578570078746D /* CSSwift_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746B66C71CA578570078746D /* CSSwift_iOSTests.swift */; };
 		746B66D31CA578990078746D /* css.js in Resources */ = {isa = PBXBuildFile; fileRef = 746B668D1CA575820078746D /* css.js */; };
 		746B66D51CA578B60078746D /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 746B66D41CA578B60078746D /* JavaScriptCore.framework */; };
 		746B66D81CA579470078746D /* CSSModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746B66D61CA579470078746D /* CSSModel.swift */; };
@@ -23,6 +21,8 @@
 		746B66DA1CA579470078746D /* CSSParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746B66D71CA579470078746D /* CSSParser.swift */; };
 		746B66DB1CA579470078746D /* CSSParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746B66D71CA579470078746D /* CSSParser.swift */; };
 		746B66DC1CA5795B0078746D /* Test.json in Resources */ = {isa = PBXBuildFile; fileRef = 746B66911CA575F40078746D /* Test.json */; };
+		74D631DD1CA5872700EAC788 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D631DC1CA5872700EAC788 /* Test.swift */; };
+		74D631DE1CA5872700EAC788 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D631DC1CA5872700EAC788 /* Test.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +47,6 @@
 		746B66561CA571560078746D /* CSSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSSwift.h; sourceTree = "<group>"; };
 		746B66581CA571560078746D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		746B665D1CA571560078746D /* CSSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CSSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		746B66621CA571560078746D /* CSSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSSwiftTests.swift; sourceTree = "<group>"; };
 		746B66641CA571560078746D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		746B668D1CA575820078746D /* css.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = css.js; path = CSSwift/css.js; sourceTree = "<group>"; };
 		746B668F1CA5759C0078746D /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -56,11 +55,11 @@
 		746B66BB1CA578570078746D /* CSSwift-iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CSSwift-iOS.h"; sourceTree = "<group>"; };
 		746B66BD1CA578570078746D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		746B66C21CA578570078746D /* CSSwift-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CSSwift-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		746B66C71CA578570078746D /* CSSwift_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSSwift_iOSTests.swift; sourceTree = "<group>"; };
 		746B66C91CA578570078746D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		746B66D41CA578B60078746D /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		746B66D61CA579470078746D /* CSSModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CSSModel.swift; path = Classes/CSSModel.swift; sourceTree = "<group>"; };
 		746B66D71CA579470078746D /* CSSParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CSSParser.swift; path = Classes/CSSParser.swift; sourceTree = "<group>"; };
+		74D631DC1CA5872700EAC788 /* Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +101,7 @@
 		746B66491CA571560078746D = {
 			isa = PBXGroup;
 			children = (
+				74D631DB1CA5870600EAC788 /* Tests */,
 				746B66B31CA5778D0078746D /* Classes */,
 				746B66BA1CA578570078746D /* CSSwift-iOS */,
 				746B66C61CA578570078746D /* CSSwift-iOSTests */,
@@ -135,7 +135,6 @@
 		746B66611CA571560078746D /* CSSwiftTests */ = {
 			isa = PBXGroup;
 			children = (
-				746B66621CA571560078746D /* CSSwiftTests.swift */,
 				746B66911CA575F40078746D /* Test.json */,
 				746B66641CA571560078746D /* Info.plist */,
 			);
@@ -173,10 +172,17 @@
 		746B66C61CA578570078746D /* CSSwift-iOSTests */ = {
 			isa = PBXGroup;
 			children = (
-				746B66C71CA578570078746D /* CSSwift_iOSTests.swift */,
 				746B66C91CA578570078746D /* Info.plist */,
 			);
 			path = "CSSwift-iOSTests";
+			sourceTree = "<group>";
+		};
+		74D631DB1CA5870600EAC788 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				74D631DC1CA5872700EAC788 /* Test.swift */,
+			);
+			name = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -366,7 +372,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				746B66631CA571560078746D /* CSSwiftTests.swift in Sources */,
+				74D631DD1CA5872700EAC788 /* Test.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,7 +389,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				746B66C81CA578570078746D /* CSSwift_iOSTests.swift in Sources */,
+				74D631DE1CA5872700EAC788 /* Test.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -660,6 +666,7 @@
 				746B66CC1CA578570078746D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		746B66CD1CA578570078746D /* Build configuration list for PBXNativeTarget "CSSwift-iOSTests" */ = {
 			isa = XCConfigurationList;
@@ -668,6 +675,7 @@
 				746B66CF1CA578570078746D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

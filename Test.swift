@@ -1,5 +1,9 @@
 import XCTest
-import CSSwift
+#if os(iOS)
+    import CSSwiftiOS
+#else
+    import CSSwift
+#endif
 
 class Tests: XCTestCase {
     var testingParser: CSSParser!
