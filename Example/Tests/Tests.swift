@@ -3,10 +3,22 @@ import XCTest
 import CSSwift
 
 class Tests: XCTestCase {
-    
+    var testingParser: CSSParser!
+    var testingInput: [String: AnyObject]!
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        testingParser = CSSParser()
+        
+        let testBundle = NSBundle(forClass: self.classForCoder)
+        
+        let jsonData = NSData(contentsOfFile: testBundle.pathForResource("Test", ofType: "json")!)
+        
+        do{
+            testingInput = try NSJSONSerialization.JSONObjectWithData(jsonData!, options: [.AllowFragments]) as! [String : AnyObject]
+        }catch{
+            
+        }
+        
     }
     
     override func tearDown() {
@@ -15,29 +27,36 @@ class Tests: XCTestCase {
     }
     
     func testParsingSimpleCSS() {
-        
-        let aParser: CSSParser! = CSSParser()
-        let result = aParser.paresCSS(" .someSelector { margin:40px 10px; padding:5px}");
-        
-        print(result)
+        let simpleCssTestCase = testingInput["veryBasicCSS"] as! [String: String]
+        let result = testingParser.paresCSS(simpleCssTestCase["input"]!);
         
         XCTAssertEqual(result.count, 1)
         
         let model: CSSModel! = result[0]
-        XCTAssertEqual(model.selector, ".someSelector")
+        XCTAssertEqual(model.selector, ".someClass")
         
         XCTAssertNotNil(model)
-        XCTAssertEqual(model.rules?.count, 2)
+        XCTAssertEqual(model.rules?.count, 1)
         
         let firstRule: CSSRuleModel = model.rules![0]
         XCTAssertNotNil(firstRule)
-        XCTAssertEqual(firstRule.ruleName, "margin")
-        XCTAssertEqual(firstRule.ruleContent, "40px 10px")
-        
-        let secondRule: CSSRuleModel = model.rules![1]
-        XCTAssertNotNil(secondRule)
-        XCTAssertEqual(secondRule.ruleName, "padding")
-        XCTAssertEqual(secondRule.ruleContent, "5px")
+        XCTAssertEqual(firstRule.ruleName, "someDirective")
+        XCTAssertEqual(firstRule.ruleContent, "someValue")
     }
     
+    func testParsingSimpleCSSWithLineBreak() {
+        let simpleCssTestCase = testingInput["basicCSS"] as! [String: String]
+        let result = testingParser.paresCSS(simpleCssTestCase["input"]!);
+        
+        XCTAssertEqual(result.count, 1)
+        
+        let model: CSSModel! = result[0]
+        XCTAssertEqual(model.selector, "html")
+        
+        let firstRule: CSSRuleModel = model.rules![0]
+        XCTAssertNotNil(firstRule)
+        XCTAssertEqual(firstRule.ruleName, "color")
+        XCTAssertEqual(firstRule.ruleContent, "black")
+        
+    }
 }
