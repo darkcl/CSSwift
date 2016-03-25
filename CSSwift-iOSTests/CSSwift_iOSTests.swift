@@ -1,5 +1,5 @@
 import XCTest
-import CSSwift
+import CSSwiftiOS
 
 class Tests: XCTestCase {
     var testingParser: CSSParser!
