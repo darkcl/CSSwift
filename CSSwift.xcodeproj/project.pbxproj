@@ -50,7 +50,7 @@
 		746B66641CA571560078746D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		746B668D1CA575820078746D /* css.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = css.js; path = CSSwift/css.js; sourceTree = "<group>"; };
 		746B668F1CA5759C0078746D /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		746B66911CA575F40078746D /* Test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Test.json; sourceTree = "<group>"; };
+		746B66911CA575F40078746D /* Test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Test.json; path = CSSwiftTests/Test.json; sourceTree = "<group>"; };
 		746B66B91CA578570078746D /* CSSwiftiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CSSwiftiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		746B66BB1CA578570078746D /* CSSwift-iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CSSwift-iOS.h"; sourceTree = "<group>"; };
 		746B66BD1CA578570078746D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -135,7 +135,6 @@
 		746B66611CA571560078746D /* CSSwiftTests */ = {
 			isa = PBXGroup;
 			children = (
-				746B66911CA575F40078746D /* Test.json */,
 				746B66641CA571560078746D /* Info.plist */,
 			);
 			path = CSSwiftTests;
@@ -180,6 +179,7 @@
 		74D631DB1CA5870600EAC788 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				746B66911CA575F40078746D /* Test.json */,
 				74D631DC1CA5872700EAC788 /* Test.swift */,
 			);
 			name = Tests;

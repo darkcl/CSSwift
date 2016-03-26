@@ -8,6 +8,7 @@ import XCTest
 class Tests: XCTestCase {
     var testingParser: CSSParser!
     var testingInput: [String: AnyObject]!
+    
     override func setUp() {
         super.setUp()
         testingParser = CSSParser()
@@ -21,7 +22,18 @@ class Tests: XCTestCase {
         }catch{
             
         }
+    }
+    
+    func expectedResultForTestCase(testCase: String!) throws -> [CSSModel]!{
+        let testCase = testingInput[testCase] as! [String: AnyObject]
+        var testingOutput: [CSSModel]! = [CSSModel]()
+        let jsonString = testCase["output"] as! String
+        let outputDict = try NSJSONSerialization.JSONObjectWithData(jsonString.dataUsingEncoding(NSUTF8StringEncoding)! , options: [.AllowFragments]) as! [AnyObject]
+        for dict in outputDict {
+            testingOutput.append(CSSModel(infoDict: dict as! [String: AnyObject]))
+        }
         
+        return testingOutput
     }
     
     override func tearDown() {
@@ -29,27 +41,28 @@ class Tests: XCTestCase {
         super.tearDown()
     }
     
+    func testParsingEmpty() {
+        let result = testingParser.parseCSS("");
+        
+        XCTAssertEqual(result.count, 0)
+    }
+    
     func testParsingSimpleCSS() {
         let simpleCssTestCase = testingInput["veryBasicCSS"] as! [String: String]
-        let result = testingParser.paresCSS(simpleCssTestCase["input"]!);
+        let result = testingParser.parseCSS(simpleCssTestCase["input"]!);
+        var expectedResult: [CSSModel]!
+        do{
+            expectedResult = try expectedResultForTestCase("veryBasicCSS")
+        }catch{
+            XCTFail("Should not fail")
+        }
         
-        XCTAssertEqual(result.count, 1)
-        
-        let model: CSSModel! = result[0]
-        XCTAssertEqual(model.selector, ".someClass")
-        
-        XCTAssertNotNil(model)
-        XCTAssertEqual(model.rules?.count, 1)
-        
-        let firstRule: CSSRuleModel = model.rules![0]
-        XCTAssertNotNil(firstRule)
-        XCTAssertEqual(firstRule.ruleName, "someDirective")
-        XCTAssertEqual(firstRule.ruleContent, "someValue")
+        XCTAssertEqual(result, expectedResult)
     }
     
     func testParsingSimpleCSSWithLineBreak() {
         let simpleCssTestCase = testingInput["basicCSS"] as! [String: String]
-        let result = testingParser.paresCSS(simpleCssTestCase["input"]!);
+        let result = testingParser.parseCSS(simpleCssTestCase["input"]!);
         
         XCTAssertEqual(result.count, 1)
         
@@ -64,7 +77,7 @@ class Tests: XCTestCase {
     
     func testParsingSimpleCSSWithComment() {
         let simpleCssTestCase = testingInput["basicCSS2"] as! [String: String]
-        let result = testingParser.paresCSS(simpleCssTestCase["input"]!);
+        let result = testingParser.parseCSS(simpleCssTestCase["input"]!);
         
         XCTAssertEqual(result.count, 1)
         

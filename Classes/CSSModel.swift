@@ -17,11 +17,12 @@ enum CSSProperties : String {
 
 public class CSSModel: NSObject {
     public var rules: [CSSRuleModel]!
-    public var comments: String!
-    public var type: String!
+    public var comments: String?
+    public var type: String?
     public var selector: String!
+    public var styles: String?
     
-    convenience init(infoDict:[String: AnyObject]!) {
+    public convenience init(infoDict:[String: AnyObject]!) {
         self.init()
         
         print(infoDict)
@@ -32,6 +33,20 @@ public class CSSModel: NSObject {
         }
         selector = infoDict["selector"]! as? String
         comments = infoDict["comments"] as? String
+    }
+    
+    override public func isEqual(object: AnyObject?) -> Bool {
+        guard let rhs = object as? CSSModel else {
+            return false
+        }
+        let lhs = self
+        
+        return (lhs.styles == rhs.styles &&
+            lhs.comments == rhs.comments &&
+            lhs.type == rhs.type &&
+            lhs.selector == rhs.selector &&
+            lhs.styles == rhs.styles &&
+            lhs.rules == rhs.rules)
     }
 }
 
@@ -44,5 +59,15 @@ public class CSSRuleModel: NSObject {
         
         ruleName = name
         ruleContent = content
+    }
+    
+    override public func isEqual(object: AnyObject?) -> Bool {
+        guard let rhs = object as? CSSRuleModel else {
+            return false
+        }
+        let lhs = self
+        
+        return (lhs.ruleName == rhs.ruleName &&
+            lhs.ruleContent == rhs.ruleContent)
     }
 }
