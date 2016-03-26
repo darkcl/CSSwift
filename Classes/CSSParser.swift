@@ -11,15 +11,15 @@ import JavaScriptCore
 
 public class CSSParser: NSObject {
     var cssJs: JSContext!
-//    var cssImportStatement: [String!];
-//    var cssKeyframeStatements: [String!];
-//    
-////    var cssRegex = new RegExp('([\\s\\S]*?){([\\s\\S]*?)}', 'gi');
-////    var cssMediaQueryRegex = '((@media [\\s\\S]*?){([\\s\\S]*?}\\s*?)})';
-////    var cssKeyframeRegex = '((@.*?keyframes [\\s\\S]*?){([\\s\\S]*?}\\s*?)})';
-////    var combinedCSSRegex = '((\\s*?(?:\\/\\*[\\s\\S]*?\\*\\/)?\\s*?@media[\\s\\S]*?){([\\s\\S]*?)}\\s*?})|(([\\s\\S]*?){([\\s\\S]*?)})'; //to match css & media queries together
-////    var cssCommentsRegex = '(\\/\\*[\\s\\S]*?\\*\\/)';
-////    var cssImportStatementRegex = new RegExp('@import .*?;', 'gi');
+    var cssImportStatement: [String]!
+    var cssKeyframeStatements: [String]!
+    
+    let cssRegex: String! = "([\\s\\S]*?){([\\s\\S]*?)}"
+    let cssMediaQueryRegex: String! = "((@media [\\s\\S]*?){([\\s\\S]*?}\\s*?)})"
+    let cssKeyframeRegex: String! = "((@.*?keyframes [\\s\\S]*?){([\\s\\S]*?}\\s*?)})"
+    let combinedCSSRegex: String! = "((\\s*?(?:\\/\\*[\\s\\S]*?\\*\\/)?\\s*?@media[\\s\\S]*?){([\\s\\S]*?)}\\s*?})|(([\\s\\S]*?){([\\s\\S]*?)})" //to match css & media queries together
+    let cssCommentsRegex: String! = "(\\/\\*[\\s\\S]*?\\*\\/)";
+    let cssImportStatementRegex: String! = "@import .*?;"
     
     func matchesForRegexInText(regex: String!, text: String!) -> [String] {
         
