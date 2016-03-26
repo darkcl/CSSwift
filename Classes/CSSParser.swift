@@ -8,24 +8,38 @@
 
 import JavaScriptCore
 
-//class Regex {
-//    let internalExpression: NSRegularExpression
-//    let pattern: String
-//    
-//    init(_ pattern: String) {
-//        self.pattern = pattern
-//        var error: NSError?
-//        self.internalExpression = NSRegularExpression(pattern: pattern, options: NSRegularExpressionOptions)
-//    }
-//    
-//    func test(input: String) -> Bool {
-//        let matches = self.internalExpression.matchesInString(input, options: nil, range:NSMakeRange(0, countElements(input)))
-//        return matches.count > 0
-//    }
-//}
 
 public class CSSParser: NSObject {
     var cssJs: JSContext!
+//    var cssImportStatement: [String!];
+//    var cssKeyframeStatements: [String!];
+//    
+////    var cssRegex = new RegExp('([\\s\\S]*?){([\\s\\S]*?)}', 'gi');
+////    var cssMediaQueryRegex = '((@media [\\s\\S]*?){([\\s\\S]*?}\\s*?)})';
+////    var cssKeyframeRegex = '((@.*?keyframes [\\s\\S]*?){([\\s\\S]*?}\\s*?)})';
+////    var combinedCSSRegex = '((\\s*?(?:\\/\\*[\\s\\S]*?\\*\\/)?\\s*?@media[\\s\\S]*?){([\\s\\S]*?)}\\s*?})|(([\\s\\S]*?){([\\s\\S]*?)})'; //to match css & media queries together
+////    var cssCommentsRegex = '(\\/\\*[\\s\\S]*?\\*\\/)';
+////    var cssImportStatementRegex = new RegExp('@import .*?;', 'gi');
+    
+    func matchesForRegexInText(regex: String!, text: String!) -> [String] {
+        
+        do {
+            let regex = try NSRegularExpression(pattern: regex, options: [])
+            let nsString = text as NSString
+            let results = regex.matchesInString(text,
+                                                options: [], range: NSMakeRange(0, nsString.length))
+            return results.map { nsString.substringWithRange($0.range)}
+        } catch let error as NSError {
+            print("invalid regex: \(error.localizedDescription)")
+            return []
+        }
+    }
+    
+    func replaceForRegexInText(regex: String!, text: String!, replaceText: String!) -> String! {
+        let nsString = text as NSString
+        let results = nsString.stringByReplacingOccurrencesOfString(text, withString: replaceText, options: [.RegularExpressionSearch, .CaseInsensitiveSearch], range: NSRange(location: 0, length: nsString.length))
+        return results
+    }
     
     func loadCssJs() {
         cssJs = JSContext()
