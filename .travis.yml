@@ -6,3 +6,5 @@ language: objective-c
 osx_image: xcode7.2
 script:
 - xctool -project CSSwift.xcodeproj -scheme CSSwift-iOS test -sdk iphonesimulator
+- xctool -project CSSwift.xcodeproj -scheme CSSwift test -sdk macosx
+- xctool -project CSSwift.xcodeproj -scheme CSSwift-tvOS test -sdk appletvos
