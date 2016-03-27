@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "746B66B81CA578570078746D"
-               BuildableName = "CSSwiftiOS.framework"
+               BuildableName = "CSSwift.framework"
                BlueprintName = "CSSwift-iOS"
                ReferencedContainer = "container:CSSwift.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "746B66B81CA578570078746D"
-            BuildableName = "CSSwiftiOS.framework"
+            BuildableName = "CSSwift.framework"
             BlueprintName = "CSSwift-iOS"
             ReferencedContainer = "container:CSSwift.xcodeproj">
          </BuildableReference>
@@ -65,7 +65,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "746B66B81CA578570078746D"
-            BuildableName = "CSSwiftiOS.framework"
+            BuildableName = "CSSwift.framework"
             BlueprintName = "CSSwift-iOS"
             ReferencedContainer = "container:CSSwift.xcodeproj">
          </BuildableReference>
@@ -83,7 +83,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "746B66B81CA578570078746D"
-            BuildableName = "CSSwiftiOS.framework"
+            BuildableName = "CSSwift.framework"
             BlueprintName = "CSSwift-iOS"
             ReferencedContainer = "container:CSSwift.xcodeproj">
          </BuildableReference>
