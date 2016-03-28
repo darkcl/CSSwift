@@ -53,12 +53,24 @@ public class CSSModel: NSObject {
 public class CSSRuleModel: NSObject {
     public var ruleName: String!
     public var ruleContent: String!
+    public var ruleComponents: [AnyObject]!
+    
+    func parseComp(comp: String!) -> AnyObject! {
+        
+        return comp
+    }
     
     convenience init(name: String!, content: String!) {
         self.init()
         
         ruleName = name
         ruleContent = content
+        ruleComponents = [AnyObject]()
+        
+        let comp = ruleContent.componentsSeparatedByString(" ")
+        for compStr in comp {
+            ruleComponents.append(parseComp(compStr))
+        }
     }
     
     override public func isEqual(object: AnyObject?) -> Bool {
@@ -67,7 +79,18 @@ public class CSSRuleModel: NSObject {
         }
         let lhs = self
         
+        var compentEqual = (lhs.ruleComponents.count == rhs.ruleComponents.count)
+        if compentEqual {
+            for obj1 in lhs.ruleComponents {
+                for obj2 in rhs.ruleComponents {
+                    if !(obj1.isEqual(obj2)) {
+                        compentEqual = false
+                    }
+                }
+            }
+        }
+        
         return (lhs.ruleName == rhs.ruleName &&
-            lhs.ruleContent == rhs.ruleContent)
+            lhs.ruleContent == rhs.ruleContent && compentEqual)
     }
 }
