@@ -3,6 +3,10 @@
         "input": ".someClass{someDirective:someValue;}",
         "output": "[{\"selector\":\".someClass\",\"rules\":[{\"directive\":\"someDirective\",\"value\":\"someValue\"}]}]"
     },
+    "urlTestingCss": {
+        "input": ".someClass{someDirective:url(\"http://google.com\");}",
+        "output": "[{\"selector\":\".someClass\",\"rules\":[{\"directive\":\"someDirective\",\"value\":\"http://google.com\"}]}]"
+    },
     "basicCSS": {
         "input": "html{\n    color:black;\n}",
         "output": "[{\"selector\":\"html\",\"rules\":[{\"directive\":\"color\",\"value\":\"black\"}]}]"

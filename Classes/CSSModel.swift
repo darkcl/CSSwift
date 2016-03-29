@@ -50,14 +50,38 @@ public class CSSModel: NSObject {
     }
 }
 
+extension String {
+    
+    func rangeFromNSRange(aRange: NSRange) -> Range<String.Index> {
+        let s = self.startIndex.advancedBy(aRange.location)
+        let e = self.startIndex.advancedBy(aRange.location + aRange.length)
+        return s..<e
+    }
+    var ns : NSString {return self as NSString}
+    subscript (aRange: NSRange) -> String? {
+        get {return self.substringWithRange(self.rangeFromNSRange(aRange))}
+    }
+    
+    func toUrl() throws -> String {
+        let s = self
+        let regex = try NSRegularExpression(pattern: "(?:\\(['|\"]?)(.*?)(?:['|\"]?\\))", options: [])
+        let matches = regex.matchesInString(s, options:[], range:NSMakeRange(0, s.ns.length))
+        
+        return s.substringWithRange(rangeFromNSRange(matches[0].rangeAtIndex(1)))
+    }
+}
+
 public class CSSRuleModel: NSObject {
     public var ruleName: String!
     public var ruleContent: String!
     public var ruleComponents: [AnyObject]!
     
-    func parseComp(comp: String!) -> AnyObject! {
-        
-        return comp
+    func parseComp(comp: String!) throws -> AnyObject! {
+        if comp.hasPrefix("url") {
+            return try comp.toUrl()
+        }else{
+            return comp
+        }
     }
     
     convenience init(name: String!, content: String!) {
@@ -69,7 +93,12 @@ public class CSSRuleModel: NSObject {
         
         let comp = ruleContent.componentsSeparatedByString(" ")
         for compStr in comp {
-            ruleComponents.append(parseComp(compStr))
+            do{
+                ruleComponents.append(try parseComp(compStr))
+            }catch{
+                ruleComponents.append(compStr)
+            }
+            
         }
     }
     
