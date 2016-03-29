@@ -60,6 +60,23 @@ class Tests: XCTestCase {
         XCTAssertEqual(firstComp, "http://google.com")
     }
     
+    func testParsingUrlFailedValueCss() {
+        let simpleCssTestCase = testingInput["urlTestingFailCss"] as! [String: String]
+        let result = testingParser.parseCSS(simpleCssTestCase["input"]!);
+        
+        XCTAssertEqual(result.count, 1)
+        
+        let model: CSSModel! = result[0]
+        XCTAssertEqual(model.selector, ".someClass")
+        
+        let firstRule: CSSRuleModel = model.rules![0]
+        XCTAssertNotNil(firstRule)
+        XCTAssertEqual(firstRule.ruleName, "someDirective")
+        
+        let firstComp = firstRule.ruleComponents[0] as? String
+        XCTAssertEqual(firstComp, "url(http://google.com")
+    }
+    
     func testParsingSimpleCSS() {
         let simpleCssTestCase = testingInput["veryBasicCSS"] as! [String: String]
         let result = testingParser.parseCSS(simpleCssTestCase["input"]!);

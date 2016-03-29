@@ -67,6 +67,12 @@ extension String {
         let regex = try NSRegularExpression(pattern: "(?:\\(['|\"]?)(.*?)(?:['|\"]?\\))", options: [])
         let matches = regex.matchesInString(s, options:[], range:NSMakeRange(0, s.ns.length))
         
+        if (matches.count != 1) {
+            return self
+        }else if (matches[0].numberOfRanges != 2) {
+            return self
+        }
+        
         return s.substringWithRange(rangeFromNSRange(matches[0].rangeAtIndex(1)))
     }
 }

@@ -7,6 +7,10 @@
         "input": ".someClass{someDirective:url(\"http://google.com\");}",
         "output": "[{\"selector\":\".someClass\",\"rules\":[{\"directive\":\"someDirective\",\"value\":\"http://google.com\"}]}]"
     },
+    "urlTestingFailCss": {
+        "input": ".someClass{someDirective:url(http://google.com;}",
+        "output": "[{\"selector\":\".someClass\",\"rules\":[{\"directive\":\"someDirective\",\"value\"url(http://google.com\"}]}]"
+    },
     "basicCSS": {
         "input": "html{\n    color:black;\n}",
         "output": "[{\"selector\":\"html\",\"rules\":[{\"directive\":\"color\",\"value\":\"black\"}]}]"
