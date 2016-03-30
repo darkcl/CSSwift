@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ObjectiveC
 
 enum CSSProperties : String {
     case Color = "color"
@@ -50,7 +51,30 @@ public class CSSModel: NSObject {
     }
 }
 
-extension String {
+public extension String {
+    private struct AssociatedKeys {
+        static var CSSisUrlAssociationKey :UInt8 = 0
+    }
+    
+    public var isUrl: Bool! {
+        get {
+            guard let result = objc_getAssociatedObject(self, &AssociatedKeys.CSSisUrlAssociationKey) as? Bool else{
+                return false
+            }
+            return result
+        }
+        
+        set {
+            if let newValue = newValue {
+                objc_setAssociatedObject(
+                    self,
+                    &AssociatedKeys.CSSisUrlAssociationKey,
+                    newValue,
+                    .OBJC_ASSOCIATION_RETAIN_NONATOMIC
+                )
+            }
+        }
+    }
     
     func rangeFromNSRange(aRange: NSRange) -> Range<String.Index> {
         let s = self.startIndex.advancedBy(aRange.location)
@@ -71,9 +95,11 @@ extension String {
             return self
         }else if (matches[0].numberOfRanges != 2) {
             return self
+        }else{
+            var result = s.substringWithRange(rangeFromNSRange(matches[0].rangeAtIndex(1)))
+            result.isUrl = true
+            return result
         }
-        
-        return s.substringWithRange(rangeFromNSRange(matches[0].rangeAtIndex(1)))
     }
 }
 
@@ -83,10 +109,11 @@ public class CSSRuleModel: NSObject {
     public var ruleComponents: [AnyObject]!
     
     func parseComp(comp: String!) throws -> AnyObject! {
-        if comp.hasPrefix("url") {
-            return try comp.toUrl()
+        let result = comp
+        if result.hasPrefix("url") {
+            return try result.toUrl()
         }else{
-            return comp
+            return result
         }
     }
     

@@ -56,7 +56,9 @@ class Tests: XCTestCase {
         XCTAssertNotNil(firstRule)
         XCTAssertEqual(firstRule.ruleName, "someDirective")
         
-        let firstComp = firstRule.ruleComponents[0] as? String
+        let firstComp = firstRule.ruleComponents[0] as! String
+        
+        XCTAssertEqual(firstComp.isUrl, true)
         XCTAssertEqual(firstComp, "http://google.com")
     }
     
@@ -73,7 +75,9 @@ class Tests: XCTestCase {
         XCTAssertNotNil(firstRule)
         XCTAssertEqual(firstRule.ruleName, "someDirective")
         
-        let firstComp = firstRule.ruleComponents[0] as? String
+        let firstComp = firstRule.ruleComponents[0] as! String
+        
+        XCTAssertEqual(firstComp.isUrl, false)
         XCTAssertEqual(firstComp, "url(http://google.com")
     }
     
