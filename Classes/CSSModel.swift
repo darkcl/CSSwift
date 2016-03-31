@@ -54,6 +54,27 @@ public class CSSModel: NSObject {
 public extension String {
     private struct AssociatedKeys {
         static var CSSisUrlAssociationKey :UInt8 = 0
+        static var CSSisColorAssociationKey :UInt8 = 0
+    }
+    
+    public var isColor: Bool! {
+        get {
+            guard let result = objc_getAssociatedObject(self, &AssociatedKeys.CSSisColorAssociationKey) as? Bool else{
+                return false
+            }
+            return result
+        }
+        
+        set {
+            if let newValue = newValue {
+                objc_setAssociatedObject(
+                    self,
+                    &AssociatedKeys.CSSisColorAssociationKey,
+                    newValue,
+                    .OBJC_ASSOCIATION_RETAIN_NONATOMIC
+                )
+            }
+        }
     }
     
     public var isUrl: Bool! {
@@ -86,6 +107,22 @@ public extension String {
         get {return self.substringWithRange(self.rangeFromNSRange(aRange))}
     }
     
+    func toColor() throws -> String {
+        let s = self
+        let regex = try NSRegularExpression(pattern: "(?:\\(['|\"]?)(.*?)(?:['|\"]?\\))", options: [])
+        let matches = regex.matchesInString(s, options:[], range:NSMakeRange(0, s.ns.length))
+        
+        if (matches.count != 1) {
+            return self
+        }else if (matches[0].numberOfRanges != 2) {
+            return self
+        }else{
+            var result = s.substringWithRange(rangeFromNSRange(matches[0].rangeAtIndex(1)))
+            result.isColor = true
+            return result
+        }
+    }
+    
     func toUrl() throws -> String {
         let s = self
         let regex = try NSRegularExpression(pattern: "(?:\\(['|\"]?)(.*?)(?:['|\"]?\\))", options: [])
@@ -112,6 +149,8 @@ public class CSSRuleModel: NSObject {
         let result = comp
         if result.hasPrefix("url") {
             return try result.toUrl()
+        }else if result.hasPrefix("rgb") {
+            return try result.toColor()
         }else{
             return result
         }

@@ -43,6 +43,44 @@ class Tests: XCTestCase {
         XCTAssertEqual(result.count, 0)
     }
     
+    func testParsingColorValueCss() {
+        let simpleCssTestCase = testingInput["colorTestingCss"] as! [String: String]
+        let result = testingParser.parseCSS(simpleCssTestCase["input"]!);
+        
+        XCTAssertEqual(result.count, 1)
+        
+        let model: CSSModel! = result[0]
+        XCTAssertEqual(model.selector, ".someClass")
+        
+        let firstRule: CSSRuleModel = model.rules![0]
+        XCTAssertNotNil(firstRule)
+        XCTAssertEqual(firstRule.ruleName, "someDirective")
+        
+        let firstComp = firstRule.ruleComponents[0] as! String
+        
+        XCTAssertEqual(firstComp.isColor, true)
+        XCTAssertEqual(firstComp, "255,255,255")
+    }
+    
+    func testParsingColorFailedValueCss() {
+        let simpleCssTestCase = testingInput["colorTestingFailCss"] as! [String: String]
+        let result = testingParser.parseCSS(simpleCssTestCase["input"]!);
+        
+        XCTAssertEqual(result.count, 1)
+        
+        let model: CSSModel! = result[0]
+        XCTAssertEqual(model.selector, ".someClass")
+        
+        let firstRule: CSSRuleModel = model.rules![0]
+        XCTAssertNotNil(firstRule)
+        XCTAssertEqual(firstRule.ruleName, "someDirective")
+        
+        let firstComp = firstRule.ruleComponents[0] as! String
+        
+        XCTAssertEqual(firstComp.isColor, false)
+        XCTAssertEqual(firstComp, "rgb(255,255,255")
+    }
+    
     func testParsingUrlValueCss() {
         let simpleCssTestCase = testingInput["urlTestingCss"] as! [String: String]
         let result = testingParser.parseCSS(simpleCssTestCase["input"]!);

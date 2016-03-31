@@ -3,6 +3,14 @@
         "input": ".someClass{someDirective:someValue;}",
         "output": "[{\"selector\":\".someClass\",\"rules\":[{\"directive\":\"someDirective\",\"value\":\"someValue\"}]}]"
     },
+    "colorTestingCss": {
+        "input": ".someClass{someDirective:rgb(255,255,255);}",
+        "output": "[{\"selector\":\".someClass\",\"rules\":[{\"directive\":\"someDirective\",\"value\":\"255,255,255\"}]}]"
+    },
+    "colorTestingFailCss": {
+        "input": ".someClass{someDirective:rgb(255,255,255 ;}",
+        "output": "[{\"selector\":\".someClass\",\"rules\":[{\"directive\":\"someDirective\",\"value\"rgb(255,255,255\"}]}]"
+    },
     "urlTestingCss": {
         "input": ".someClass{someDirective:url(\"http://google.com\");}",
         "output": "[{\"selector\":\".someClass\",\"rules\":[{\"directive\":\"someDirective\",\"value\":\"http://google.com\"}]}]"
