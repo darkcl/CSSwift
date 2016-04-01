@@ -59,7 +59,7 @@ class Tests: XCTestCase {
         let firstComp = firstRule.ruleComponents[0] as! String
         
         XCTAssertEqual(firstComp.isColor, true)
-        XCTAssertEqual(firstComp, "255,255,255")
+        XCTAssertEqual(firstComp, "255, 255, 255")
     }
     
     func testParsingColorFailedValueCss() {

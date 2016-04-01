@@ -4,7 +4,7 @@
         "output": "[{\"selector\":\".someClass\",\"rules\":[{\"directive\":\"someDirective\",\"value\":\"someValue\"}]}]"
     },
     "colorTestingCss": {
-        "input": ".someClass{someDirective:rgb(255,255,255);}",
+        "input": ".someClass{someDirective:rgb(255, 255, 255);}",
         "output": "[{\"selector\":\".someClass\",\"rules\":[{\"directive\":\"someDirective\",\"value\":\"255,255,255\"}]}]"
     },
     "colorTestingFailCss": {

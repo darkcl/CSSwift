@@ -51,6 +51,12 @@ public class CSSModel: NSObject {
     }
 }
 
+enum StringParsing: ErrorType {
+    case CannotParseColor
+    case CannotParseUrl
+    case CannotFindSpecial
+}
+
 public extension String {
     private struct AssociatedKeys {
         static var CSSisUrlAssociationKey :UInt8 = 0
@@ -107,35 +113,52 @@ public extension String {
         get {return self.substringWithRange(self.rangeFromNSRange(aRange))}
     }
     
-    func toColor() throws -> String {
-        let s = self
-        let regex = try NSRegularExpression(pattern: "(?:\\(['|\"]?)(.*?)(?:['|\"]?\\))", options: [])
-        let matches = regex.matchesInString(s, options:[], range:NSMakeRange(0, s.ns.length))
-        
-        if (matches.count != 1) {
-            return self
-        }else if (matches[0].numberOfRanges != 2) {
-            return self
-        }else{
-            var result = s.substringWithRange(rangeFromNSRange(matches[0].rangeAtIndex(1)))
-            result.isColor = true
-            return result
+    func toColor() -> [String] {
+        do {
+            let s = self
+            let regex = try NSRegularExpression(pattern: "rgb(a|)(?:\\(['|\"]?)(.*?)(?:['|\"]?\\))", options: [])
+            let matches = regex.matchesInString(s, options:[], range:NSMakeRange(0, s.ns.length))
+            
+            var result = [String]()
+            if (matches.count == 0) {
+                throw StringParsing.CannotParseColor
+            }else{
+                for match in matches {
+                    if match.numberOfRanges == 3 {
+                        var resultStr = s.substringWithRange(rangeFromNSRange(match.rangeAtIndex(2)))
+                        resultStr.isColor = true
+                        result.append(resultStr)
+                    }
+                }
+                return result
+            }
+        } catch {
+            return [String]()
         }
+        
     }
     
-    func toUrl() throws -> String {
-        let s = self
-        let regex = try NSRegularExpression(pattern: "(?:\\(['|\"]?)(.*?)(?:['|\"]?\\))", options: [])
-        let matches = regex.matchesInString(s, options:[], range:NSMakeRange(0, s.ns.length))
-        
-        if (matches.count != 1) {
-            return self
-        }else if (matches[0].numberOfRanges != 2) {
-            return self
-        }else{
-            var result = s.substringWithRange(rangeFromNSRange(matches[0].rangeAtIndex(1)))
-            result.isUrl = true
-            return result
+    func toUrl() -> [String] {
+        do {
+            let s = self
+            let regex = try NSRegularExpression(pattern: "url(?:\\(['|\"]?)(.*?)(?:['|\"]?\\))", options: [])
+            let matches = regex.matchesInString(s, options:[], range:NSMakeRange(0, s.ns.length))
+            
+            var result = [String]()
+            if (matches.count == 0) {
+                throw StringParsing.CannotParseUrl
+            }else{
+                for match in matches {
+                    if match.numberOfRanges == 2 {
+                        var resultStr = s.substringWithRange(rangeFromNSRange(match.rangeAtIndex(1)))
+                        resultStr.isUrl = true
+                        result.append(resultStr)
+                    }
+                }
+                return result
+            }
+        } catch {
+            return [String]()
         }
     }
 }
@@ -145,15 +168,14 @@ public class CSSRuleModel: NSObject {
     public var ruleContent: String!
     public var ruleComponents: [AnyObject]!
     
-    func parseComp(comp: String!) throws -> AnyObject! {
-        let result = comp
-        if result.hasPrefix("url") {
-            return try result.toUrl()
-        }else if result.hasPrefix("rgb") {
-            return try result.toColor()
-        }else{
-            return result
+    func parseComp(comp: String!) throws -> [AnyObject]! {
+        var result = [String]()
+        result.appendContentsOf(comp.toUrl())
+        result.appendContentsOf(comp.toColor())
+        if result.count == 0 {
+            throw StringParsing.CannotFindSpecial
         }
+        return result
     }
     
     convenience init(name: String!, content: String!) {
@@ -163,14 +185,10 @@ public class CSSRuleModel: NSObject {
         ruleContent = content
         ruleComponents = [AnyObject]()
         
-        let comp = ruleContent.componentsSeparatedByString(" ")
-        for compStr in comp {
-            do{
-                ruleComponents.append(try parseComp(compStr))
-            }catch{
-                ruleComponents.append(compStr)
-            }
-            
+        do{
+            ruleComponents.appendContentsOf(try parseComp(ruleContent))
+        }catch{
+            ruleComponents = ruleContent.componentsSeparatedByString(" ")
         }
     }
     
