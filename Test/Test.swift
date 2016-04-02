@@ -162,4 +162,17 @@ class Tests: XCTestCase {
         XCTAssertEqual(firstRule.ruleName, "color")
         XCTAssertEqual(firstRule.ruleContent, "black")
     }
+    
+    func testParsingSubStyles() {
+        let simpleCssTestCase = testingInput["advCSS"] as! [String: String]
+        let result = testingParser.parseCSS(simpleCssTestCase["input"]!);
+        
+        XCTAssertEqual(result.count, 1)
+        
+        let model: CSSModel! = result[0]
+        XCTAssertEqual(model.selector, "@media screen and (min-width: 780px)")
+        XCTAssertEqual(model.type, "media")
+        XCTAssertEqual(model.subStyles.count, 1)
+        
+    }
 }

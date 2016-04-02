@@ -22,18 +22,34 @@ public class CSSModel: NSObject {
     public var type: String?
     public var selector: String!
     public var styles: String?
+    public var subStyles: [CSSModel]!
     
     public convenience init(infoDict:[String: AnyObject]!) {
         self.init()
         
         print(infoDict)
         rules = [CSSRuleModel]()
-        for dict in (infoDict["rules"] as? [Dictionary<String,String>])! {
-            
-            rules.append(CSSRuleModel(name: dict["directive"], content: dict["value"]))
-        }
+        subStyles = [CSSModel]()
+        
         selector = infoDict["selector"]! as? String
         comments = infoDict["comments"] as? String
+        type = infoDict["type"] as? String
+        
+        let rulesArray = infoDict["rules"] as? [Dictionary<String,AnyObject>]
+        if rulesArray != nil {
+            for dict in rulesArray! {
+                rules.append(CSSRuleModel(name: dict["directive"] as! String, content: dict["value"] as! String))
+            }
+        }
+        
+        
+        let subStylesArray = infoDict["subStyles"] as? [Dictionary<String,AnyObject>]
+        if subStylesArray != nil {
+            for dict in subStylesArray! {
+                subStyles.append(CSSModel(infoDict: dict))
+            }
+        }
+        
     }
     
     override public func isEqual(object: AnyObject?) -> Bool {
